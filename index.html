@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Example</title>
+</head>
+<body>
+<h1>Przykład API</h1>
+<div id="content">Ładowanie...</div>
+
+<script>
+    async function fetchData() {
+        try {
+            const response = await fetch('http://138.2.158.133', {
+                method: 'GET',
+                mode: 'cors',
+                credentials: 'include'
+            });
+            const data = await response.json();
+            document.getElementById('content').innerText = JSON.stringify(data, null, 2);
+        } catch (error) {
+            document.getElementById('content').innerText = 'Błąd podczas ładowania danych';
+        }
+    }
+
+    fetchData();
+</script>
+</body>
+</html>
